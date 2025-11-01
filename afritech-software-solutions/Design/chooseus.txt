@@ -1,0 +1,64 @@
+/* Section Container */
+padding: 96px 16px (py-24 px-4)
+background: linear-gradient(
+  to bottom,
+  hsl(var(--muted) / 0.3),
+  hsl(var(--background))
+)
+
+/* Header */
+text-align: center
+margin-bottom: 64px (mb-16)
+
+/* H2 Heading */
+font-size: 36px (text-4xl) / 48px (md:text-5xl)
+font-weight: 700 (bold)
+margin-bottom: 16px (mb-4)
+background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)))
+background-clip: text
+color: transparent
+
+/* Benefits Grid */
+display: grid
+grid-template-columns: 1fr / repeat(2, 1fr) [md] / repeat(4, 1fr) [lg]
+gap: 32px (gap-8)
+max-width: 1280px (max-w-6xl)
+margin: 0 auto
+
+/* Benefit Item */
+text-align: center
+transition: transform 0.3s
+
+/* Benefit Item Hover */
+transform: scale(1.05)
+
+/* Icon Container */
+width: 64px (w-16)
+height: 64px (h-16)
+border-radius: 50% (rounded-full)
+background: linear-gradient(
+  to bottom right,
+  hsl(var(--primary)),
+  hsl(var(--secondary))
+)
+display: flex
+align-items: center
+justify-content: center
+margin: 0 auto 16px (mx-auto mb-4)
+transition: box-shadow 0.3s
+
+/* Icon Container Hover */
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1)
+
+/* Icon */
+width: 32px (w-8)
+height: 32px (h-8)
+color: hsl(var(--primary-foreground))
+
+/* Benefit Title */
+font-size: 20px (text-xl)
+font-weight: 600 (semibold)
+margin-bottom: 8px (mb-2)
+
+/* Benefit Description */
+color: hsl(var(--muted-foreground))

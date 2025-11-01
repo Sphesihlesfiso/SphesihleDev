@@ -1,0 +1,40 @@
+/* Container */
+position: fixed
+top: 0, left: 0, right: 0
+z-index: 50
+border-bottom: 1px solid hsl(var(--border))
+background: hsl(var(--background) / 0.95)
+backdrop-filter: blur(8px)
+
+/* Nav Bar */
+height: 64px (h-16)
+display: flex
+align-items: center
+justify-content: space-between
+padding: 0 16px (px-4)
+max-width: 1280px (container)
+margin: 0 auto
+
+/* Logo */
+font-size: 20px (text-xl)
+font-weight: 700 (bold)
+background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)))
+background-clip: text
+color: transparent
+
+/* Nav Links */
+font-size: 14px (text-sm)
+font-weight: 500 (medium)
+color: hsl(var(--foreground))
+transition: color 0.3s
+
+/* Nav Links Hover */
+color: hsl(var(--primary))
+
+/* Contact Button */
+height: 36px (size-sm)
+padding: 8px 12px
+background: hsl(var(--primary))
+color: hsl(var(--primary-foreground))
+border-radius: 6px (rounded-md)
+transition: all 0.3s

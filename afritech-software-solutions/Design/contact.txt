@@ -1,0 +1,101 @@
+/* Section Container */
+padding: 96px 16px (py-24 px-4)
+background: hsl(var(--background))
+
+/* Content Container */
+max-width: 896px (max-w-4xl)
+margin: 0 auto
+
+/* Header */
+text-align: center
+margin-bottom: 48px (mb-12)
+
+/* H2 Heading */
+font-size: 36px (text-4xl) / 48px (md:text-5xl)
+font-weight: 700 (bold)
+margin-bottom: 16px (mb-4)
+background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)))
+background-clip: text
+color: transparent
+
+/* Subtitle */
+font-size: 18px (text-lg)
+color: hsl(var(--muted-foreground))
+
+/* Contact Card */
+border: 2px solid hsl(var(--border))
+border-radius: 8px (rounded-lg)
+background: hsl(var(--card))
+
+/* Card Header */
+text-align: center
+padding: 24px 24px 0
+
+/* Card Title */
+font-size: 24px (text-2xl)
+font-weight: 600 (semibold)
+
+/* Card Description */
+color: hsl(var(--muted-foreground))
+
+/* Card Content */
+padding: 0 24px 24px
+
+/* Contact Info Grid */
+display: grid
+grid-template-columns: 1fr / repeat(2, 1fr) [md]
+gap: 24px (gap-6)
+
+/* Contact Link */
+display: flex
+align-items: center
+gap: 16px (gap-4)
+padding: 16px (p-4)
+border-radius: 8px (rounded-lg)
+border: 1px solid hsl(var(--border))
+transition: all 0.3s
+
+/* Contact Link Hover */
+border-color: hsl(var(--primary) / 0.5)
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1)
+
+/* Contact Icon Container */
+width: 48px (w-12)
+height: 48px (h-12)
+border-radius: 50% (rounded-full)
+background: hsl(var(--primary) / 0.1)
+display: flex
+align-items: center
+justify-content: center
+transition: background 0.3s
+
+/* Contact Icon Container Hover */
+background: hsl(var(--primary) / 0.2)
+
+/* Contact Icon */
+width: 24px (w-6)
+height: 24px (h-6)
+color: hsl(var(--primary))
+
+/* Contact Label */
+font-size: 14px (text-sm)
+color: hsl(var(--muted-foreground))
+
+/* Contact Value */
+font-weight: 500 (medium)
+transition: color 0.3s
+
+/* Contact Value Hover */
+color: hsl(var(--primary))
+
+/* Email Button Container */
+margin-top: 32px (mt-8)
+text-align: center
+
+/* Email Button */
+height: 44px (size-lg)
+padding: 11px 32px (px-8)
+background: hsl(var(--primary))
+color: hsl(var(--primary-foreground))
+border-radius: 6px (rounded-md)
+transition: all 0.3s

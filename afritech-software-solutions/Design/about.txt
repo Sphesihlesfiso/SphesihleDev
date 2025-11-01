@@ -1,0 +1,62 @@
+/* Section Container */
+padding: 96px 16px (py-24 px-4)
+background: linear-gradient(
+  to bottom,
+  hsl(var(--background)),
+  hsl(var(--muted) / 0.3)
+)
+
+/* Content Container */
+max-width: 896px (max-w-4xl)
+margin: 0 auto
+text-align: center
+margin-bottom: 48px (mb-12)
+
+/* H2 Heading */
+font-size: 36px (text-4xl) / 48px (md:text-5xl)
+font-weight: 700 (bold)
+margin-bottom: 24px (mb-6)
+background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)))
+background-clip: text
+color: transparent
+
+/* Paragraphs */
+font-size: 18px (text-lg)
+color: hsl(var(--muted-foreground))
+line-height: 1.75 (leading-relaxed)
+margin-top: 16px (mt-4) [for second paragraph]
+
+/* Strong Text */
+color: hsl(var(--foreground))
+
+/* Tech Stack Grid */
+display: grid
+grid-template-columns: repeat(2, 1fr) / repeat(4, 1fr) [md]
+gap: 24px (gap-6)
+margin-top: 64px (mt-16)
+max-width: 768px (max-w-3xl)
+margin: 64px auto 0
+
+/* Tech Card */
+display: flex
+flex-direction: column
+align-items: center
+gap: 12px (gap-3)
+padding: 24px (p-6)
+border-radius: 8px (rounded-lg)
+border: 1px solid hsl(var(--border))
+background: hsl(var(--card))
+transition: all 0.3s
+
+/* Tech Card Hover */
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1)
+
+/* Tech Icon */
+width: 40px (w-10)
+height: 40px (h-10)
+color: hsl(var(--primary))
+
+/* Tech Label */
+font-size: 14px (text-sm)
+font-weight: 500 (medium)
+text-align: center

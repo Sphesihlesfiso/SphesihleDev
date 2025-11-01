@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+
+:root {
+    /* Light Mode */
+    --background: 0 0% 100%              /* #FFFFFF */
+    --foreground: 215 25% 15%             /* Dark blue-gray text */
+    --primary: 200 95% 35%                /* Deep teal #007A9E */
+    --primary-foreground: 0 0% 100%       /* White */
+    --secondary: 195 85% 50%              /* Bright cyan #0BB4D9 */
+    --secondary-foreground: 0 0% 100%     /* White */
+    --accent: 28 85% 55%                  /* Orange #EE6C21 */
+    --accent-foreground: 0 0% 100%        /* White */
+    --muted: 210 30% 96%                  /* Light gray-blue */
+    --muted-foreground: 215 16% 47%       /* Medium gray */
+    --border: 214 32% 91%                 /* Light border */
+    
+
+}
+.dark{
+    /* Dark Mode */
+    --background: 215 30% 8%              /* Very dark blue */
+    --foreground: 0 0% 98%                /* Off-white */
+    --primary: 195 85% 50%                /* Bright cyan */
+    --secondary: 200 95% 35%              /* Deep teal */
+    --accent: 28 85% 55%                  /* Orange */
+    }
+
