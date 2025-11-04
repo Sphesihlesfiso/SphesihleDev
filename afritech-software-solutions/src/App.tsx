@@ -1,10 +1,10 @@
 import './index.css'
-import Footer from './components/Footer/Footer'
+import { Footer } from './components/Footer/Footer'
 function App() {
   
   return (
     <>
-      <h1 className="text-3xl font-bold underline hover:bg-amber-700">
+      <h1 className="font-bold underline hover:bg-amber-700 text-">
       Hello world!
   </h1>
   <Footer/>
