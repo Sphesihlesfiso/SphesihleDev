@@ -4,6 +4,8 @@
 .env.development
 .env.production
 .env.test
+.vscode
+google650161c175571f96.html
 
 # Node modules
 node_modules/
