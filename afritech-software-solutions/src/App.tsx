@@ -1,14 +1,17 @@
 import './index.css'
 import { Footer } from './components/Footer/Footer'
+import { Header } from './components/Header/Header'
+import Hero from './components/Hero/Hero'
 function App() {
   
   return (
-    <>
-      <h1 className="font-bold underline hover:bg-amber-700 text-">
-      Hello world!
-  </h1>
-  <Footer/>
-    </>
+    <div className='min-h-screen'>
+      <Header/>
+        <main>
+          <Hero/>
+        </main>
+      <Footer/>
+    </div>
   )
 }
 

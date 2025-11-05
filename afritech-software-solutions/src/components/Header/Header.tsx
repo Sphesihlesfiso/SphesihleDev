@@ -1,8 +1,11 @@
-
-export const Header = () => {
-  //Must add section Ket and id for Scrolling!
+import { ToogleButton } from "../ToogleButton"
+type HeaderTooglers={
+  dark:boolean;
+  setDark:(value:boolean)=>void
+}
+export const Header = ({dark,setDark}:HeaderTooglers) => {
+  //Must add section Key and id for Scrolling!
   const HeaderSections=[{section:"Home"}, {section:"About"} ,{section:"Services"},{section:"Contact Us"}
-
   ]
   return (
     <header className="z-50 flex-row border-b  backdrop-blur-lg  px-6 " style={{ background: "hsl(0 0% 100% / 0.95)"
@@ -17,6 +20,7 @@ export const Header = () => {
               {item.section}
             </li>))
             }
+            <ToogleButton isOn={dark} setIson={setDark}/>
           </ul>
 
       </nav>
