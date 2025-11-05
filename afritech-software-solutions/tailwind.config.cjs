@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.cjs
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
@@ -11,7 +11,6 @@ module.exports = {
       },
       colors: {
         background: 'hsl(var(--background))',
-        
         foreground: 'hsl(var(--foreground))',
         primary: 'hsl(var(--primary))',
         'primary-foreground': 'hsl(var(--primary-foreground))',
@@ -22,6 +21,8 @@ module.exports = {
         muted: 'hsl(var(--muted))',
         'muted-foreground': 'hsl(var(--muted-foreground))',
         border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
       },
     },
   },

@@ -5,7 +5,6 @@ type ToogleButtonProps= {
     setIson:(value:boolean)=>void
 }
 export const  ToogleButton=({isOn,setIson}:ToogleButtonProps)=> {
-    
   return (
     <button onClick={()=> setIson(!isOn)}>
         {isOn?<AiOutlineSun/>:<TbMoonFilled/>}

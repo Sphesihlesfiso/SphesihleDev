@@ -13,10 +13,9 @@ export default function Hero() {
         </p>
         <p className="text-4xl mb-10" style={{color:'white'}}>Looking to modernize your business with a custom web app? Let's build it together.
         </p>
-       <button className="py-4 px-6 text-lg bg-amber-400 hover:bg-amber-500 transition-colors rounded-md w-fit mx-auto">
+       <button className="py-4 px-6 text-lg bg-amber-400 hover:bg-amber-500 transition-colors  w-fit mx-auto">
             Let's Talk
         </button>
-
     </div>
   )
 }
