@@ -10,9 +10,7 @@ function App() {
       <Header dark={Dark} setDark={turnDark}/>
         <main>
           <Hero/>
-            <div className="bg-black text-card-foreground p-4 rounded-lg">
-              <button className="bg-card text-card-foreground text-white hover:brightness-90">Click me</button>
-            </div>
+            
         </main>
       <Footer/>
     </div>

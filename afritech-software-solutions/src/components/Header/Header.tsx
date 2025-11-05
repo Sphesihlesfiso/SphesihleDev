@@ -8,19 +8,16 @@ export const Header = ({dark,setDark}:HeaderTooglers) => {
   const HeaderSections=[{section:"Home"}, {section:"About"} ,{section:"Services"},{section:"Contact Us"}
   ]
   return (
-    <header className="z-50 flex-row border-b  backdrop-blur-lg  px-6 " style={{ background: "hsl(0 0% 100% / 0.95)"
-}}>
-     
-      
-      <nav className="flex  flex-row justify-end items-center  m-0">
-        <h1 className="text-3xl flex-1 font-bold items-center " style={{ color: 'hsl(200, 95%, 35%)',backgroundColor: 'linear-gradient(to right, hsl(200, 95%, 35%), hsl(195, 85%, 50%))' }}>Afritech</h1>
-          <ul className="list-none font-medium flex  flex-row  gap-4  ">
-            {HeaderSections.map((item)=>(
-              <li className=" ml-6 rounded-2xl p-4"  style={{color:"red"}}>
+    <header className="fixed top-0 left-0 right-0 z-50 border-b  border-border  backdrop-blur-sm">
+      <nav className="h-16 flex items-center justify-between px-4 w-7xl m-0">
+        <h1 className="text-3xl font-bold items-center bg-gradient-primary-secondary bg-clip-text text-transparent" >Afritech</h1>
+          <ul className="list-none font-medium flex flex-row gap-4 " role="list">
+            {HeaderSections.map((item,index)=>(
+              <li key={index} className="text-sm font-medium bg-gradient-primary-secondary bg-clip-text text-transparent hover:text-primary cursor-pointer transition duration-300" role="listitem">
               {item.section}
             </li>))
             }
-            <ToogleButton isOn={dark} setIson={setDark}/>
+            <ToogleButton isOn={dark} setIson={setDark} />
           </ul>
 
       </nav>
