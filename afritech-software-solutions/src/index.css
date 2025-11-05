@@ -12,6 +12,7 @@ All colors MUST be HSL.
 
     --card: 0 0% 100%;
     --card-foreground: 215 25% 15%;
+    --dark:0 0% 0%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 15%;
@@ -121,5 +122,11 @@ All colors MUST be HSL.
 
   .animate-fade-in {
     animation: fade-in 1s ease-out;
+  }
+  .bg-gradient-primary-secondary {
+    background-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+  .dark .bg-gradient-primary-secondary {
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
   }
 }

@@ -3,12 +3,15 @@
 
 export const Footer = () => {
   return (
-    <footer className="border-t bg-">
-      <div  className="flex flex-row place-items-center text-center justify-center px-2 py-4 gap-4" >
-        <h1 className="text-lg font-bold " style={{ color: 'hsl(200, 95%, 35%)',backgroundColor: 'linear-gradient(to right, hsl(200, 95%, 35%), hsl(195, 85%, 50%))' }}
-      >Afritech Software Solutions.</h1>
-        <p className="">© {new Date().getFullYear()} AfriTech Software Solutions. Cape Town, South Africa.</p>
-        
+    <footer className="border-t border-border bg-muted">
+      <div className="m-0 w-screen py-8 px-4">
+        <div className="flex flex-col justify-between items-center gap-4">
+          <div className="flex items-center gap-2 ">
+            <p className="text-lg font-bold bg-gradient-primary-secondary bg-clip-text text-transparent">AfriTech </p>
+            <p className="text-sm text-muted-foreground ">Software Solutions</p>
+            <p className="text-sm text-muted-foreground text-center">© {new Date().getFullYear()}  AfriTech Software Solutions. Cape Town, South Africa.</p>
+          </div>
+        </div>
       </div>
     </footer>
   );

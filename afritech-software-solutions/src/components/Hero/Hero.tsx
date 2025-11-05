@@ -16,6 +16,8 @@ export default function Hero() {
        <button className="py-4 px-6 text-lg bg-amber-400 hover:bg-amber-500 transition-colors rounded-md w-fit mx-auto">
             Let's Talk
         </button>
+    
+
 
     </div>
   )
