@@ -13,7 +13,7 @@ export const Header = ({dark,setDark}:HeaderTooglers) => {
         <h1 className="text-3xl font-bold items-center bg-gradient-primary-secondary bg-clip-text text-transparent" >Afritech</h1>
           <ul className="list-none font-medium flex flex-row gap-4 " role="list">
             {HeaderSections.map((item,index)=>(
-              <li key={index} className="text-sm font-medium bg-gradient-primary-secondary bg-clip-text text-transparent hover:text-primary cursor-pointer transition duration-300" role="listitem">
+              <li key={index} className="text-md font-medium bg-clip-text cursor-pointer text-white hover:bg-gradient-primary-secondary transition duration-300" role="listitem">
               {item.section}
             </li>))
             }

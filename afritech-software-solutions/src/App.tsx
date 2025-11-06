@@ -6,11 +6,11 @@ import { useState } from 'react'
 function App() {
   const [Dark,turnDark]=useState(false)
   return (
-    <div className='min-h-screen'>
+    <div className={Dark ?'dark min-h-screen':'min-h-screen'}>
       <Header dark={Dark} setDark={turnDark}/>
-        <main>
+        <main aria-roledescription='main'>
           <Hero/>
-            
+          
         </main>
       <Footer/>
     </div>

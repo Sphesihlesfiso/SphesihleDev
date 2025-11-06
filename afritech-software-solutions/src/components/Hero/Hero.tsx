@@ -5,9 +5,15 @@ import heroImage from './../../assets/hero-image.jpg';
 
 export default function Hero() {
   return (
-    <div className="flex flex-col py-8  text-center min-h-screen " style={{backgroundImage: `url(${heroImage})`,backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',}}>
+    <div className="relative min-h-screen flex justify-center items-center overflow-hidden" style={{backgroundImage: `url(${heroImage})`,
+    position:'absolute',
+    inset:0,
+    zIndex:0,
+    backgroundSize:'cover',
+    backgroundPosition:"center"
+    }}>
+      
+
         <h1 className="text-center mb-8 mt-4 text-8xl  "style={{color:'white'}}>AfriTech Software Solutions</h1>
         <p className="mb-8 text-4xl leading-relaxed" style={{color:'white'}}>We turn ideas into powerful, reliable web applications. Based in Cape <br/>Town, our team builds full-stack systems for businesses of all sizes,<br/> delivering fast, scalable, and production-ready software.
         </p>
