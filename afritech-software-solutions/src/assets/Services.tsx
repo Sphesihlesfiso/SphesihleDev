@@ -4,7 +4,7 @@ import {
   FaLaptopCode,   // Frontend Development & UX Design
   FaCogs          // System Integration & Automation
 } from "react-icons/fa"
-export const Services = [
+export const ServicesArray = [
   {
     icon: FaCode,
     title: "Full-Stack Web Development",
