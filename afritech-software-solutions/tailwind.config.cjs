@@ -10,11 +10,12 @@ module.exports = {
         sans: ['Inter', ...fontFamily.sans],
       },
       colors: {
+        'primary-foreground': 'hsl(var(--primary-foreground ,0 0% 100%))',
         background: 'hsl(var(--background))',
         black: 'hsl(var(--black))',
         foreground: 'hsl(var(--foreground))',
         primary: 'hsl(var(--primary))',
-        'primary-foreground': 'hsl(var(--primary-foreground))',
+        
         secondary: 'hsl(var(--secondary))',
         'secondary-foreground': 'hsl(var(--secondary-foreground))',
         accent: 'hsl(var(--accent))',
@@ -22,7 +23,12 @@ module.exports = {
         muted: 'hsl(var(--muted))',
         'muted-foreground': 'hsl(var(--muted-foreground))',
         border: 'hsl(var(--border))',
+
       },
+      boxShadow: {
+      card: 'var(--shadow-card)',
+    }
+      
     },
   },
   plugins: [],

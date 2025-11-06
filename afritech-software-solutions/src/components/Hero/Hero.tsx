@@ -1,30 +1,20 @@
 import heroImage from './../../assets/hero-image.jpg';
 
-
-
-
 export default function Hero() {
   return (
-    <div className="relative min-h-screen flex justify-center items-center overflow-hidden" style={{backgroundImage: `url(${heroImage})`,
+    <div className="relative min-h-screen flex justify-center items-center  overflow-hidden" style={{backgroundImage: `url(${heroImage})`,
     position:'absolute',
     inset:0,
     zIndex:0,
     backgroundSize:'cover',
     backgroundPosition:"center"
     }}>
-      
-
-        <h1 className="text-center mb-8 mt-4 text-8xl  "style={{color:'white'}}>AfriTech Software Solutions</h1>
-        <p className="mb-8 text-4xl leading-relaxed" style={{color:'white'}}>We turn ideas into powerful, reliable web applications. Based in Cape <br/>Town, our team builds full-stack systems for businesses of all sizes,<br/> delivering fast, scalable, and production-ready software.
-        </p>
-        <p className="text-4xl mb-10" style={{color:'white'}}>Looking to modernize your business with a custom web app? Let's build it together.
-        </p>
-       <button className="py-4 px-6 text-lg bg-amber-400 hover:bg-amber-500 transition-colors rounded-md w-fit mx-auto">
-            Let's Talk
-        </button>
-    
-
-
+      <div className='relative z-10 py-32 px-4 m-0 text-center'>
+        <h1 className="mb-6 text-primary-foreground  animate-fade-in font-bold text-5xl  md:text-6xl lg:text-7xl    ">AfriTech Software Solutions</h1>
+        <p className="mb-8 text-xl max-w-3xl text-primary-foreground leading-relaxed bg-background-90 md:2xl  mx-auto">We turn ideas into powerful, reliable web applications. Based in Cape <br/>Town, our team builds full-stack systems for businesses of all sizes,<br/> delivering fast, scalable, and production-ready software.</p>
+        <p className="text-lg text-primary-foreground mb-10 bg-background-80 md:text-xl" >Looking to modernize your business with a custom web app? Let's build it together.</p>
+          <button className="h-auto py-6 px-8 text-lg bg-accent text--accent-foreground rounded-md shadow-card transition-colors duration-300 :hover shadow-hover ">Let's Talk</button>
+      </div>
     </div>
   )
 }

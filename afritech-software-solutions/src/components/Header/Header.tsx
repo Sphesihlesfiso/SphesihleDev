@@ -11,9 +11,9 @@ export const Header = ({dark,setDark}:HeaderTooglers) => {
     <header className="fixed top-0 left-0 right-0 z-50 border-b  border-border  backdrop-blur-sm">
       <nav className="h-16 flex items-center justify-between px-4 w-7xl m-0">
         <h1 className="text-3xl font-bold items-center bg-gradient-primary-secondary bg-clip-text text-transparent" >Afritech</h1>
-          <ul className="list-none font-medium flex flex-row gap-4 " role="list">
+          <ul className="list-none font-medium flex flex-row gap-4 " aria-label="list">
             {HeaderSections.map((item,index)=>(
-              <li key={index} className="text-md font-medium bg-clip-text cursor-pointer text-white hover:bg-gradient-primary-secondary transition duration-300" role="listitem">
+              <li key={index} className="text-md font-medium bg-clip-text cursor-pointer text-white hover:underline" aria-label="listitem">
               {item.section}
             </li>))
             }
