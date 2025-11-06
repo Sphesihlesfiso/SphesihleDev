@@ -32,7 +32,7 @@ color: hsl(var(--foreground))
 /* Tech Stack Grid */
 display: grid
 grid-template-columns: repeat(2, 1fr) / repeat(4, 1fr) [md]
-gap: 24px (gap-6)
+gap: 24px (gap-6)`
 margin-top: 64px (mt-16)
 max-width: 768px (max-w-3xl)
 margin: 64px auto 0

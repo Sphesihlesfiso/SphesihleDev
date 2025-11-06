@@ -1,3 +1,5 @@
+import LangCard from "../components/LangCard";
+import Languages from "../assets/Languages";
 export const About=()=>{
     return(
         <div className="py-24 px-4 bg-gradient-section">
@@ -9,7 +11,11 @@ export const About=()=>{
                     <p className="text-lg text-muted-foreground leading-relaxed mt-4 mx-auto max-w-prose">
                     We work with companies across industries, from startups to established enterprises, helping them digitize processes, streamline workflows, and build software that scales. Our approach combines <strong className="text-foreground">clean architecture</strong>, <strong className="text-foreground">performance optimization</strong>, and <strong className="text-foreground">user-centered design</strong>.
                     </p>
-
+                <div className="grid grid-cols-2 gap-6 mt-16 max-w-3xl m-auto md:grid-cols-4">
+                    {
+                    Languages.map((card,index)=> <LangCard icon={card.svg} name={card.name} key={index} />)
+                    }
+                </div>
 
             </div>
 
