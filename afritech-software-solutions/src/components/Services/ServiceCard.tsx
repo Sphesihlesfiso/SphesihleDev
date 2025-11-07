@@ -7,8 +7,8 @@ type CardProps ={
 export default function ServiceCard({icon,title,description}:CardProps) {
     const Icon=icon
   return (
-    <div className="border-2  border-border rounded-lg bg-card transition-all duration-300 hover:border-color shadow-card">
-        <div className="w-12 h-12 rounded-lg card  flex justify-center items-center mb-4 bg-card">
+    <div className="border-2 border-border rounded-lg bg-card shadow-card transition-transform duration-300 hover:-translate-y-2 hover:shadow-hover">
+        <div className="w-12 h-12 rounded-xl card  flex justify-center items-center mb-0 bg-card ml-6 mt-4">
            <Icon size={24} color="primary" />
         </div >
         <h1 className="text-xl p-6 pb-0 font-semibold ">{title}</h1>

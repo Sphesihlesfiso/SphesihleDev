@@ -2,10 +2,8 @@ import heroImage from './../../assets/hero-image.jpg';
 
 export default function Hero() {
   return (
-    <div className="relative min-h-screen flex justify-center items-center  overflow-hidden" style={{backgroundImage: `url(${heroImage})`,
-    position:'absolute',
-    inset:0,
-    zIndex:0,
+    <section className="relative min-h-screen flex justify-center items-center" style={{backgroundImage: `url(${heroImage})`,
+    
     backgroundSize:'cover',
     backgroundPosition:"center"
     }}>
@@ -15,6 +13,6 @@ export default function Hero() {
         <p className="text-lg text-primary-foreground mb-10 bg-background-80 md:text-xl" >Looking to modernize your business with a custom web app? Let's build it together.</p>
           <button className="h-auto py-6 px-8 text-lg bg-accent text--accent-foreground rounded-md shadow-card transition-colors duration-300 :hover shadow-hover ">Let's Talk</button>
       </div>
-    </div>
+    </section>
   )
 }
