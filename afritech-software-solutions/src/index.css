@@ -1,6 +1,5 @@
 @import "tailwindcss";
-
-
+@tailwind utilities;
 
 :root {
     --background: 0 0% 100%;
