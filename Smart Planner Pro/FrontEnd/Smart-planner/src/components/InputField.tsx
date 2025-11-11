@@ -10,17 +10,23 @@ type inputItem = {
 type inputProps ={
     item:inputItem,
 }
-export default function InputField({item}:inputProps) {
-
+export default function InputField({ item }: inputProps) {
   return (
-    <div className="flex flex-col my-2" >
-        <Label htmlFor={item.inputLabelName}>{item.name}</Label>
-        <Input className="my-1" id={item.inputId}
-                type={item.inputType}
-                placeholder={item.inputPlaceHolder}
-                required
-        />
-        
+    <div className="flex flex-col my-3">
+      <Label
+        htmlFor={item.inputLabelName}
+        className="text-sm font-medium text-foreground/80"
+      >
+        {item.name}
+      </Label>
+      <Input
+        className="mt-1 h-10 w-full rounded-md border border-border bg-background px-3 text-sm focus:ring-2 focus:ring-primary"
+        id={item.inputId}
+        type={item.inputType}
+        placeholder={item.inputPlaceHolder}
+        required
+      />
     </div>
-  )
+  );
 }
+
