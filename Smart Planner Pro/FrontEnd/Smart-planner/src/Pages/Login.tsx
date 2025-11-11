@@ -16,19 +16,14 @@ export default function Login() {
       inputPlaceHolder: "eg: sphesihlemabaso25@gmail.com",
     },
     {
-      name: "Name",
-      inputLabelName: "name",
-      inputId: "name",
-      inputType: "text",
-      inputPlaceHolder: "Enter your name",
-    },
-    {
-      name: "FullName",
-      inputLabelName: "full name",
-      inputId: "fullName",
-      inputType: "text",
-      inputPlaceHolder: "Sphe Mabaso",
-    },
+    "name": "Password",
+    "inputLabelName": "password",
+    "inputId": "password",
+    "inputType": "password",
+    "inputPlaceHolder": "Enter your password"
+    }
+
+    
   ];
   const LoginButtons=[
     {
@@ -54,7 +49,17 @@ export default function Login() {
   ]
 
   const [signUp, setSignUp] = useState(true);
-
+  {
+    if (!signUp) {
+        formItems.push({
+            name: "Full Name",
+            inputLabelName: "name",
+            inputId: "name",
+            inputType: "text",
+            inputPlaceHolder: "eg:Sphesihle Mabaso",
+        })
+          
+        }}
   return (
     <section
       aria-label="Login or register"
@@ -73,6 +78,9 @@ export default function Login() {
         </CardHeader>
 
         <CardContent className="space-y-2 mb-0">
+
+         
+
           {formItems.map((item, index) => (
             <InputField key={index} item={item} />
           ))}
@@ -82,11 +90,11 @@ export default function Login() {
           <button
             className="w-full mb-1"
             >
-                Sign In
+               { !signUp?"Sign Up":"Sign In"}
             </button>
-            <h4 className="mb-2">Don't have an account?<a onClick={() => setSignUp((prev) => !prev)}>Sign up</a> </h4>
-            <hr className="h-1 bg-foreground"/>
-            
+            <h4 className="mb-2">{!signUp?"Already have an account?":"Don't have an account "}<a onClick={() => setSignUp((prev) => !prev)}> { signUp?"Sign Up":"Sign In"}</a> </h4>
+            <hr className="border-0 h-0.5 mb-1  bg-black w-full"/>
+            <p>Or {signUp?"sign in":"sign up"} with:</p>
             <div className="grid grid-cols-2 gap-4 w-full max-w-md">
                 {
                  LoginButtons.map((button,index)=> (
