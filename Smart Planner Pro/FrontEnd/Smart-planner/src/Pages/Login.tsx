@@ -5,7 +5,7 @@ import { FaGoogle, FaInstagram, FaApple,FaGithub } from "react-icons/fa";
 import LoginButton from "@/components/LoginButton";
 
 
-import InputField from "@/components/inputField";
+import InputField from "@/components/InputField";
 export default function Login() {
   const formItems = [
     {
