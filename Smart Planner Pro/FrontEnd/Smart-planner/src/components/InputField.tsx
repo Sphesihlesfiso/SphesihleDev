@@ -6,11 +6,14 @@ type inputItem = {
     inputId:string,
     inputType:string,
     inputPlaceHolder:string,
+    
 }
 type inputProps ={
     item:inputItem,
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-export default function InputField({ item }: inputProps) {
+export default function InputField({ item,value,onChange }: inputProps) {
   return (
     <div className="flex flex-col my-3">
       <Label
@@ -25,6 +28,8 @@ export default function InputField({ item }: inputProps) {
         type={item.inputType}
         placeholder={item.inputPlaceHolder}
         required
+        value={value}
+        onChange={onChange}
       />
     </div>
   );

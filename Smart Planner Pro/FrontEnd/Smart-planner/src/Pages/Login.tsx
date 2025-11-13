@@ -7,6 +7,10 @@ import LoginButton from "@/components/LoginButton";
 
 import InputField from "@/components/InputField";
 export default function Login() {
+  const [signUp, setSignUp] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const formItems = [
     {
       name: "Email",
@@ -47,18 +51,48 @@ export default function Login() {
         color:"gray-800"
     }
   ]
+  const handleLogin = async (e: React.FormEvent) => {
+      e.preventDefault();
 
-  const [signUp, setSignUp] = useState(true);
+      const res = await fetch('http://localhost:4000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email,password 
+        }),
+      });
+
+  const data = await res.json();
+  console.log(data);
+};
+
+
+ 
   {
     if (!signUp) {
-        formItems.push({
+        formItems[0]={
             name: "Full Name",
             inputLabelName: "name",
             inputId: "name",
             inputType: "text",
             inputPlaceHolder: "eg:Sphesihle Mabaso",
-        })
-          
+        };
+        formItems[1]={
+            name: "Email",
+            inputLabelName: "email",
+            inputId: "email",
+            inputType: "email",
+            inputPlaceHolder: "eg: sphesihlemabaso25@gmail.com",
+          };
+        formItems[2]={
+          name: "Password",
+          inputLabelName: "password",
+          inputId: "password",
+          inputType: "password",
+          inputPlaceHolder: "Enter your password"
+          }
+            
         }}
   return (
     <section
@@ -82,16 +116,26 @@ export default function Login() {
          
 
           {formItems.map((item, index) => (
-            <InputField key={index} item={item} />
+            <InputField
+                key={index}
+                item={item}
+                value={item.inputId === "email" ? email : password}
+                onChange={(e) =>
+                  item.inputId === "email" ? setEmail(e.target.value) : setPassword(e.target.value)
+                }
+              />
+
           ))}
         </CardContent>
 
         <CardFooter className="flex flex-col justify-center">
-          <button
-            className="w-full mb-1"
+          <form>
+          <button onSubmit={handleLogin}
+            className="w-full mb-1" type="submit"
             >
                { !signUp?"Sign Up":"Sign In"}
             </button>
+          </form>
             <h4 className="mb-2">{!signUp?"Already have an account?":"Don't have an account "}<a onClick={() => setSignUp((prev) => !prev)}> { signUp?"Sign Up":"Sign In"}</a> </h4>
             <hr className="border-0 h-0.5 mb-1  bg-black w-full"/>
             <p>Or {signUp?"sign in":"sign up"} with:</p>
