@@ -1,9 +1,10 @@
-import Login from "./Pages/Login"
-
+import { ResizableDemo } from "./Pages/Home"
  
 function App() {
   return (
-      <Login/>
+    <div className="flex justify-center items-center min-h-screen min-w-full">
+      <ResizableDemo/>
+      </div>
    
     
   )
