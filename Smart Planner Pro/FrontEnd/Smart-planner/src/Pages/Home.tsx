@@ -1,8 +1,8 @@
 
 export function Home() {
   return (
-   <div>
-    
+   <div className="bg-background">
+
    </div>
   )
 }
