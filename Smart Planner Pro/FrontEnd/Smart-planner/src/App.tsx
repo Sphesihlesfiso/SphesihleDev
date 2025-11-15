@@ -1,10 +1,10 @@
-import { ResizableDemo } from "./Pages/Home"
- 
+import Header from "./components/Header"
 function App() {
   return (
-    <div className="flex justify-center items-center min-h-screen min-w-full">
-      <ResizableDemo/>
-      </div>
+    <div className="">
+      <Header />
+      
+    </div>
    
     
   )
