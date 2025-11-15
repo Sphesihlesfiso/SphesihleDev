@@ -1,5 +1,5 @@
 
-export function ResizableDemo() {
+export function Home() {
   return (
    <div>
     
