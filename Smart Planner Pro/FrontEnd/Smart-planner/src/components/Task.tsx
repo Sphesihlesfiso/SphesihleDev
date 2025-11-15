@@ -1,28 +1,59 @@
 
 import { Clock,Thermometer } from "lucide-react"
-export default function Task() {
-  return (
-    <div className="gird grid-rows-4 gap-4 p-5 my-4 space-y-2 rounded-md bg-card mx-2  border-l-4  border-red-600">
-        <div className="flex flex-row justify-between">
-            <h1 className="font-bold text-accent-foreground">Team Meeting</h1>
-            <h6 className="bg-red-600 rounded-lg p-0.5">high</h6>
-        </div>
-        <p className="font-semibold">
-            Weekly Meeting with the ceo
-        </p>
-        <div className="flex flex-row justify-between font-bold">
-                <div className="font-bold">10:00-11:00</div>
-                <div>Remote</div>
-                <div className="flex flex-row font-bold">
-                    <Thermometer/>
-                    <p>24 Sunny</p>
+type TaskProps ={
+    taskTitle: string
+    description: string
+    time: string
+    location: string
+    synchronised: boolean
+    priority: string
+    weather: {
+        icon: string
+        temp: string
+        condition: string
 
-                </div>
-                
-            </div>
-        <div className="text-green-500">
-            Synced to Google Calendar
+}
+}
+
+
+// Component
+export default function Task(props: TaskProps) {
+  return (
+    <div className="grid grid-rows-4 gap-4 p-5 my-4 space-y-2 rounded-md bg-card mx-2 border-l-4 border-red-600">
+      {/* Title + Priority */}
+      <div className="flex flex-row justify-between">
+        <h1 className="font-bold text-accent-foreground">{props.taskTitle}</h1>
+        <h6 className="bg-red-600 text-white rounded-lg px-2 py-0.5">
+          {props.priority}
+        </h6>
+      </div>
+
+      {/* Description */}
+      <p className="font-semibold">{props.description}</p>
+
+      {/* Time, Location, Weather */}
+      <div className="flex flex-row justify-between font-bold">
+        <div className="flex flex-row items-center gap-1">
+          <Clock />
+          <p>{props.time}</p>
         </div>
+
+        <div>{props.location}</div>
+
+        <div className="flex flex-row items-center gap-1">
+          <Thermometer />
+          <span>{props.weather.icon}</span>
+          <span>{props.weather.temp}°C</span>
+          <span>{props.weather.condition}</span>
+        </div>
+      </div>
+
+      {/* Sync Status */}
+      <div className="flex flex-row gap-1 text-green-500">
+        {props.synchronised?
+         "Synced to Google Calendar" : "Not synced to Google Calendar"}
+      </div>
     </div>
   )
 }
+

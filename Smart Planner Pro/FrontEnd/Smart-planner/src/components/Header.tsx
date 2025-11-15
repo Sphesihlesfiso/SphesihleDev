@@ -1,4 +1,4 @@
-import { PanelLeft,Sun,Moon,Bell,LogOut,User } from "lucide-react"
+import { PanelLeft,Moon,Bell,User } from "lucide-react"
 
 export default function Header() {
   return (

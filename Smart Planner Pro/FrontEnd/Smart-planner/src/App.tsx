@@ -1,10 +1,9 @@
-import Header from "./components/Header"
-import Task from "./components/Task"
+import { Home } from "./Pages/Home"
 function App() {
   return (
-    <div className="">
-      <Header />
-      <Task/>
+    <div className="w-[1350px]">
+      
+      <Home/>
     </div>
    
     
