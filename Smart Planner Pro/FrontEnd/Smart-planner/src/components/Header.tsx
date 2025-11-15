@@ -3,7 +3,7 @@ import { PanelLeft,Sun,Moon,Bell,LogOut,User } from "lucide-react"
 export default function Header() {
   return (
 
-    <header className="sticky top-0  border-b  w-[1350px]">
+    <header className="sticky top-0  border-b  w-[1350px] bg-white">
       <div className="flex flex-row items-center justify-between p-2">
         
         {/* Left side: PanelLeft */}
