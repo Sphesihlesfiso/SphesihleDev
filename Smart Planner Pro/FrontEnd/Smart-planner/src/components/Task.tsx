@@ -44,8 +44,10 @@ export default function Task(props: TaskProps) {
             <p className="font-semibold">{props.description}</p>
         </div>
         <div className="flex gap-6">
-            <SquarePen />
-            <Trash/>
+            <button ><SquarePen /></button>
+            <button onClick={()=>{
+                
+            }}><Trash/></button>
         </div>
         
         

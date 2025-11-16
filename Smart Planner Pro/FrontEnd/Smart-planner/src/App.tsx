@@ -1,9 +1,10 @@
-import { Home } from "./Pages/Home"
+
+import TaskMananger from "./Pages/TaskMananger"
 function App() {
   return (
     <div className="w-[1950px]">
-      
-      <Home/>
+
+      <TaskMananger/>
     </div>
    
     
