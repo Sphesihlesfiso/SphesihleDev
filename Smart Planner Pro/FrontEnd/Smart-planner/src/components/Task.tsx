@@ -1,5 +1,5 @@
 
-import { Clock,Thermometer } from "lucide-react"
+import { Clock,Thermometer,Trash,SquarePen } from "lucide-react"
 type TaskProps ={
     taskTitle: string
     description: string
@@ -19,17 +19,39 @@ type TaskProps ={
 // Component
 export default function Task(props: TaskProps) {
   return (
-    <div className="grid grid-rows-4 gap-4 p-5 my-4 space-y-2 rounded-md bg-card mx-2 border-l-4 border-red-600">
+    <div className={`grid grid-rows-4 gap-4 p-5 my-4 space-y-2 rounded-md bg-card mx-2 border-l-4 ${
+            props.priority === "high"
+            ? "border-red-600"
+            : props.priority == "low"
+            ? "border-green-600"
+            : "border-yellow-600"
+        }`} 
+        >
       {/* Title + Priority */}
       <div className="flex flex-row justify-between">
         <h1 className="font-bold text-accent-foreground">{props.taskTitle}</h1>
+        <div>
         <h6 className="bg-red-600 text-white rounded-lg px-2 py-0.5">
           {props.priority}
+
         </h6>
+        </div>
       </div>
 
       {/* Description */}
-      <p className="font-semibold">{props.description}</p>
+      <div className="flex flex-row justify-between">
+        <div>
+            <p className="font-semibold">{props.description}</p>
+        </div>
+        <div className="flex gap-6">
+            <SquarePen />
+            <Trash/>
+        </div>
+        
+        
+
+      </div>
+      
 
       {/* Time, Location, Weather */}
       <div className="flex flex-row justify-between font-bold">

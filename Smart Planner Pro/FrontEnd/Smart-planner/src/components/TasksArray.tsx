@@ -6,6 +6,7 @@ export const Tasks = [
     location: "Dannhauser",
     synchronised: true,
     priority: "low",
+    color:"green",
     weather: {
       icon: "Cloud",
       temp: "18",
@@ -19,6 +20,7 @@ export const Tasks = [
     location: "Remote",
     synchronised: false,
     priority: "high",
+    color:"red",
     weather: {
       icon: "Sun",
       temp: "25",

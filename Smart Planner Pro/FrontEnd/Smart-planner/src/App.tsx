@@ -1,7 +1,7 @@
 import { Home } from "./Pages/Home"
 function App() {
   return (
-    <div className="w-[1350px]">
+    <div className="w-[1950px]">
       
       <Home/>
     </div>
