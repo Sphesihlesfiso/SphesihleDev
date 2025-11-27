@@ -8,10 +8,6 @@ import { Strategy } from "passport-local";
 import session from "express-session";
 import env from "dotenv";
 import bcrypt  from "bcrypt"
-import crypto from "crypto";
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 env.config();
 const options = {
   key: fs.readFileSync('./ssl/private.key'),
@@ -67,6 +63,7 @@ function fetchBagsFromdataBase() {
     });
   });
 }
+console.log(fetchBagsFromdataBase())
 
 app.get("/", async (req, res) => {
   try {
@@ -140,7 +137,7 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/account", (req, res) => {
-  if (req.isAuthenticated() && req.user) {
+  if (req.isAuthenticated()) {
     console.log(`User inside: ${req.user.id}`);
 
     if (req.user.id === 7) {
@@ -148,7 +145,8 @@ app.get("/account", (req, res) => {
       res.redirect("/account/admin")
     } else {
       console.log("non admin");
-      return res.render("account");
+      console.log("Rendering Account");
+      res.render("account");
     }
   } else {
     console.log("not authenticated");
@@ -247,21 +245,27 @@ console.log("outside")
 
 
 
-app.get("/checkout", (req, res) => {
-  const paymentData = {
-  merchant_id: "10000100",
-  merchant_key: "46f0cd694581a",
-  return_url: "https://d0df5321a769.ngrok-free.app",
-  cancel_url: "https://547cfb2939e8.ngrok-free.app/cart",
-  notify_url: "https://547cfb2939e8.ngrok-free.app/about",
-  name_first: "John",
-  name_last: "Doe",
-  email_address: "mabasosphesihle25@gmail.com",
-  amount: "20500", // R50
-  item_name: "Test Product",
+app.get("/checkout", async(req, res) => {
+  try {
+      const user = req.user;
+      console.log("User in:", user.id);
+
+      
+      const result = await dataBase.query(`
+      SELECT pictures.*
+      FROM pictures
+      JOIN orders ON pictures.bag_id = orders.bag_id  AND orders.user_id =$1
+    `,[user.id]);
+       
+      console.log(result.rows)
+      const paymentData = {
+      merchant_id: "10000100",
+      merchant_key: "46f0cd694581a",
+      
+      amount: result.rows.reduce((sum, car) => sum + car.price, 500), // R50
+      item_name: "Test Product",
 };
 
-  // Create the query string
   const queryString = Object.keys(paymentData)
     .map(key => `${key}=${encodeURIComponent(paymentData[key])}`)
     .join("&");
@@ -271,6 +275,10 @@ app.get("/checkout", (req, res) => {
   const PAYFAST_URL="https://sandbox.payfast.co.za/eng/process"
 
   res.redirect(`${PAYFAST_URL}?${queryString}`);
+    } catch (error) {
+      console.error("Error",error)
+    }
+  
 });
 
 console.log("OUTSIDE")
@@ -312,8 +320,13 @@ app.get('/about',async (req, res) => {
   res.render('about');
 });
 app.get('/login', (req, res) => {
+  console.log("here1111111111111111111111111111111111111")
+    if (!req.isAuthenticated()){
+      res.render("login")
+    } else {
+      res.render("account")
+    }
     
-    res.render("login")
 });
 
 
@@ -335,11 +348,13 @@ app.get('/cart',async (req, res) => {
     `,[user.id]);
       
        res.render("cart",{bagsIncart:result.rows});
+       console.log(result.rows)
     } catch (error) {
       console.error("Error",error)
     }
    
   } else {
+    console.log("AIboooooooooooooooooooooooooooooooo")
     res.redirect("/login");}
 });
 app.post('/register', (req, res) => {
