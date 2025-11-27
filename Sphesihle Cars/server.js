@@ -109,7 +109,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-app.post("/upload", upload.single("image"), (req, res) => {
+app.post("/account/admin", upload.single("image"), (req, res) => {
   const { name, price, available_bags } = req.body;
   const image = req.file.filename;
 
@@ -144,14 +144,15 @@ app.get("/account", (req, res) => {
     console.log(`User inside: ${req.user.id}`);
 
     if (req.user.id === 7) {
-      console.log("admin");
-      return res.render("upload");
+      console.log("this is an admin")
+      res.redirect("/account/admin")
     } else {
       console.log("non admin");
       return res.render("account");
     }
   } else {
     console.log("not authenticated");
+    console.log("redirecting!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     return res.redirect("/login");
   }
 });
@@ -301,8 +302,8 @@ app.post("/addBag", async (req, res) => {
   }
 });
 
-app.get('/upload',async (req, res) => {
-    res.render('upload');
+app.get('/account/admin',async (req, res) => {
+    res.render('admin');
 
   
 
@@ -311,7 +312,7 @@ app.get('/about',async (req, res) => {
   res.render('about');
 });
 app.get('/login', (req, res) => {
-  
+    
     res.render("login")
 });
 
