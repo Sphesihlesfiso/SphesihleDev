@@ -8,6 +8,7 @@ An online car store webapp built with html ,css ,js,Node.js, Express, Ejs,Postgr
 - Add cars to cart
 - Session-based login and shopping
 - Salting and hashing for security and https protocol.
+- PayFast Api intergration (sandbox mode)
 - Responsive UI with Bootstrap
 
 ## Installation

@@ -9,6 +9,7 @@ import { Strategy } from "passport-local";
 import session from "express-session";
 import env from "dotenv";
 import bcrypt  from "bcrypt"
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 env.config();
 //certifiactes for the https protocol
 const options = {
@@ -91,6 +92,15 @@ app.get("/", async (req, res) => {
     res.status(500).send("Error loading products");
   }
 });
+app.get("/auth/google", 
+  passport.authenticate("google", { scope: ["profile", "email"] })
+  
+);
+console.log("hit")
+app.get("/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  (req, res) => res.redirect("/account")
+);
 
 //using the multer module to upload the pictures
 const storage = multer.diskStorage({
@@ -188,7 +198,7 @@ app.post("/register", async (req, res) => {
 });
 //using the passport for login and out 
 //Must add login with google and apple
-passport.use(
+passport.use("local",
   new Strategy(async function verify(username, password, cb) {
     try {
       const result = await dataBase.query("SELECT * FROM users WHERE email = $1 ", [
@@ -219,6 +229,31 @@ passport.use(
     }
   })
 );
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "https://localhost:3000/auth/google/callback"
+  },
+  async (accessToken, refreshToken, profile, cb) => {
+        // profile contains user info from Google
+        let newUser;
+        try {
+          
+        console.log("profile",profile.emails[0].value)
+        const result =await dataBase.query("SELECT * FROM users WHERE email=$1",[profile.emails[0].value])
+        if (result.rows.length ===0){
+          newUser =await dataBase.query("INSERT INTO users (email,password) VALUES ($1,$2)",[profile.emails[0].value,"google"])
+          cb(null,newUser.rows[0])
+
+        }else{
+          cb(null,result.rows[0])
+        }
+        } catch (error) {
+          cb(error)
+        }
+      }
+    )
+)
 
 passport.serializeUser((user, cb) => {
   cb(null, user);
@@ -226,6 +261,7 @@ passport.serializeUser((user, cb) => {
 passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
+
 
 app.get("/checkout", async(req, res) => {
   try {
@@ -326,4 +362,5 @@ app.post('/register', (req, res) => {
 });
 
 https.createServer(options, app).listen(port, () => {
+  console.log("Running on ",port)
 });
