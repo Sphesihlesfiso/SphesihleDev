@@ -1,3 +1,4 @@
+
 import express from "express";
 import pg from "pg";
 import https from 'https';
@@ -9,6 +10,7 @@ import session from "express-session";
 import env from "dotenv";
 import bcrypt  from "bcrypt"
 env.config();
+//certifiactes for the https protocol
 const options = {
   key: fs.readFileSync('./ssl/private.key'),
   cert: fs.readFileSync('./ssl/certificate.crt')
@@ -16,6 +18,7 @@ const options = {
 const app = express();
 const port = process.env.port;
 app.use(express.static("public"));
+//uploads folder is where the pictures will be stored.
 app.use('/uploads', express.static('public/uploads'));
 
 app.use(express.urlencoded({ extended: true }));
@@ -24,7 +27,7 @@ app.set('view engine', 'ejs');
 
 const saltRounds = 10;
 
-
+//using session for server side rendering no jwt.
 app.use(
   session({
     secret: process.env.key,
@@ -39,6 +42,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+//configurating the Postgress Db
 const dataBase=new pg.Client({
     user:process.env.user,
     host:process.env.host,
@@ -49,7 +53,7 @@ const dataBase=new pg.Client({
 
 dataBase.connect();
 
-
+//Getting the bags from db using a promise for synchronization.
 function fetchBagsFromdataBase() {
 
   return new Promise((resolve, reject) => {
@@ -63,11 +67,9 @@ function fetchBagsFromdataBase() {
     });
   });
 }
-console.log(fetchBagsFromdataBase())
 
 app.get("/", async (req, res) => {
   try {
-    console.log("INNNNNNNNNNNNNNNNNNNN");
 
     // Fetch all bags (available products)
     const cars = await fetchBagsFromdataBase();
@@ -75,20 +77,13 @@ app.get("/", async (req, res) => {
     let bagsIncart = [];
 
     if (req.user) {
-      
-      console.log(`user id: ${req.user.id}`);
 
       const orders_result = await dataBase.query(
         "SELECT * FROM orders WHERE orders.user_id=$1",
         [req.user.id]
       );
-
       bagsIncart = orders_result.rows.map(row => row.bag_id);
-    } else {
-      
-      console.log("User not logged in, showing empty cart.");
     }
-
     // Render page with either cart items or empty cart
     res.render("home", { cars, bagsIncart });
   } catch (err) {
@@ -97,7 +92,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-
+//using the multer module to upload the pictures
 const storage = multer.diskStorage({
   destination: "./public/uploads/",
   filename: (req, file, cb) => {
@@ -110,7 +105,7 @@ app.post("/account/admin", upload.single("image"), (req, res) => {
   const { name, price, available_bags } = req.body;
   const image = req.file.filename;
 
- 
+  //puting the pictures details into the db.
   const query = `
     INSERT INTO pictures (name,price,image,available_bags)
     VALUES ($1, $2, $3, $4)
@@ -138,19 +133,13 @@ app.get("/logout", (req, res) => {
 
 app.get("/account", (req, res) => {
   if (req.isAuthenticated()) {
-    console.log(`User inside: ${req.user.id}`);
-
+    //Will render admin or normal use page depending on user id
     if (req.user.id === 7) {
-      console.log("this is an admin")
       res.redirect("/account/admin")
     } else {
-      console.log("non admin");
-      console.log("Rendering Account");
       res.render("account");
     }
   } else {
-    console.log("not authenticated");
-    console.log("redirecting!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     return res.redirect("/login");
   }
 });
@@ -158,25 +147,26 @@ app.get("/account", (req, res) => {
 
 app.post("/login",
   passport.authenticate("local", {
-    
     successRedirect: "/account" ,
     failureRedirect: "/login",
   })
 );
-
+//validating and registering user if does not exist in the db.
 app.post("/register", async (req, res) => {
+  
   const email = req.body.username;
   const password = req.body.password;
-  console.log(email,password)
 
   try {
     const checkResult = await dataBase.query("SELECT * FROM users WHERE email = $1", [
       email,
     ]);
-
+      //checking if the person does not already have an account
     if (checkResult.rows.length > 0) {
+      
       res.redirect("/login");
     } else {
+      //Hashing , salting and storing the passoword 10.
       bcrypt.hash(password, saltRounds, async (err, hash) => {
         if (err) {
           console.error("Error hashing password:", err);
@@ -188,17 +178,16 @@ app.post("/register", async (req, res) => {
           const user = result.rows[0];
           req.login(user, (err) => {
 
-            console.log(email);
             res.redirect("/account");
           });
         }
       });
     }
   } catch (err) {
-    console.log(err);
   }
 });
-
+//using the passport for login and out 
+//Must add login with google and apple
 passport.use(
   new Strategy(async function verify(username, password, cb) {
     try {
@@ -227,7 +216,6 @@ passport.use(
         return cb("User not found");
       }
     } catch (err) {
-      console.log(err);
     }
   })
 );
@@ -238,40 +226,28 @@ passport.serializeUser((user, cb) => {
 passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
-console.log("outside")
-
-
-
-
-
 
 app.get("/checkout", async(req, res) => {
   try {
       const user = req.user;
-      console.log("User in:", user.id);
-
-      
       const result = await dataBase.query(`
       SELECT pictures.*
       FROM pictures
       JOIN orders ON pictures.bag_id = orders.bag_id  AND orders.user_id =$1
     `,[user.id]);
        
-      console.log(result.rows)
       const paymentData = {
       merchant_id: "10000100",
       merchant_key: "46f0cd694581a",
-      
       amount: result.rows.reduce((sum, car) => sum + car.price, 500), // R50
       item_name: "Test Product",
-};
+      };
 
   const queryString = Object.keys(paymentData)
     .map(key => `${key}=${encodeURIComponent(paymentData[key])}`)
     .join("&");
 
   // Redirect user to PayFast sandbox
-  
   const PAYFAST_URL="https://sandbox.payfast.co.za/eng/process"
 
   res.redirect(`${PAYFAST_URL}?${queryString}`);
@@ -281,27 +257,21 @@ app.get("/checkout", async(req, res) => {
   
 });
 
-console.log("OUTSIDE")
 app.delete("/removeFromCart",async (req,res)=>{
-  console.log("INSIDE")
   const {bag_id}=req.body;
-  console.log(bag_id);
   await dataBase.query(`DELETE FROM orders WHERE bag_id=$1`,[bag_id]);
    res.status(200).json({ message: "Item removed" });
 })
+//Adding the bags into the database in one table.
 app.post("/addBag", async (req, res) => {
-  console.log("inside")
   
   try {
     const { bag_id } = req.body;
     const user = req.user;
-    console.log(`User put or not ${req.user}`)
     const result = await dataBase.query(
       "INSERT INTO orders (bag_id,user_id) VALUES ($1,$2)  RETURNING *",
       [bag_id,user.id]
     );
-
-    console.log("Inserted order:", result.rows[0]);
 
     res.status(201).json({ order: result.rows[0] });
   } catch (err) {
@@ -313,14 +283,13 @@ app.post("/addBag", async (req, res) => {
 app.get('/account/admin',async (req, res) => {
     res.render('admin');
 
-  
-
 });
+
 app.get('/about',async (req, res) => {
   res.render('about');
 });
+
 app.get('/login', (req, res) => {
-  console.log("here1111111111111111111111111111111111111")
     if (!req.isAuthenticated()){
       res.render("login")
     } else {
@@ -329,38 +298,32 @@ app.get('/login', (req, res) => {
     
 });
 
-
 app.get('/register', (req, res) => {
   res.render('register');
 });
+//Getting the bags for each specific user
 
 app.get('/cart',async (req, res) => {
   if (req.isAuthenticated()){ 
     try {
       const user = req.user;
-      console.log("User in:", user.id);
-
-      
       const result = await dataBase.query(`
       SELECT pictures.*
       FROM pictures
       JOIN orders ON pictures.bag_id = orders.bag_id  AND orders.user_id =$1
     `,[user.id]);
-      
        res.render("cart",{bagsIncart:result.rows});
-       console.log(result.rows)
     } catch (error) {
       console.error("Error",error)
     }
    
   } else {
-    console.log("AIboooooooooooooooooooooooooooooooo")
     res.redirect("/login");}
 });
+
 app.post('/register', (req, res) => {
   res.render('register');
 });
 
 https.createServer(options, app).listen(port, () => {
-  console.log(`Secure server running on https://localhost ${port}`);
 });
