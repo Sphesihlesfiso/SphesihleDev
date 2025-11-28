@@ -1,8 +1,6 @@
 
 import express from "express";
 import pg from "pg";
-import https from 'https';
-import fs from 'fs';
 import multer from "multer"
 import passport from "passport";
 import { Strategy } from "passport-local";
@@ -12,10 +10,7 @@ import bcrypt  from "bcrypt"
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 env.config();
 //certifiactes for the https protocol
-const options = {
-  key: fs.readFileSync('./ssl/private.key'),
-  cert: fs.readFileSync('./ssl/certificate.crt')
-};
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -361,6 +356,6 @@ app.post('/register', (req, res) => {
   res.render('register');
 });
 
-https.createServer(options, app).listen(port,"0.0.0.0", () => {
-  console.log("Running on ",port)
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server running on port ${port}`);
 });
