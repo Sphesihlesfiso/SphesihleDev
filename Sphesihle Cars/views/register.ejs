@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign-up</title>
+    
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css"
       rel="stylesheet"
@@ -12,14 +13,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link href="css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css"/>
+    
   </head>
   <body>
     <style></style>
     <div
       class="container d-flex align-content-center justify-content-center m-auto"
     >
-      <!-- <h2 style="display: flex; align-content: center">Sign Up</h2> -->
       <form method="POST" action="/register">
         <div class="mb-3 text-center">
           <input
@@ -64,11 +65,15 @@
           I agree to all statements in
           <a href="terms_of_service.html">Terms of Service</a>
         </div>
-        <button type="submit" class="w-100 btn btn-outline-dark mt-auto">
-          Register
-        </button>
         <a
-          class="m-2 d-flex flex-row align-items-center px-7 py-8 w-100 btn btn-outline-dark mt-auto"
+          type="submit"
+          class="w-100 btn btn-outline-dark mt-auto mb-3"
+          role="button"
+        >
+          Register
+        </a>
+        <a
+          class="d-flex flex-row w-100 justify-content-center align-items-center px-7 py-8 btn btn-outline-dark mt-auto"
           href="/auth/google"
           role="button"
         >

@@ -17,7 +17,8 @@ const options = {
   cert: fs.readFileSync('./ssl/certificate.crt')
 };
 const app = express();
-const port = process.env.port;
+const port = process.env.PORT || 3000;
+
 app.use(express.static("public"));
 //uploads folder is where the pictures will be stored.
 app.use('/uploads', express.static('public/uploads'));
@@ -31,7 +32,7 @@ const saltRounds = 10;
 //using session for server side rendering no jwt.
 app.use(
   session({
-    secret: process.env.key,
+    secret: process.env.KEY,
     resave: false,
     saveUninitialized: false,
     cookie:{ secure:false,
@@ -44,12 +45,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 //configurating the Postgress Db
-const dataBase=new pg.Client({
-    user:process.env.user,
-    host:process.env.host,
-    database:process.env.database,
-    password:process.env.password,
-    port:process.env.db_p,
+const dataBase = new pg.Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === "production" 
+    ? { rejectUnauthorized: false } 
+    : false
 });
 
 dataBase.connect();
@@ -232,7 +232,7 @@ passport.use("local",
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://localhost:3000/auth/google/callback"
+      callbackURL: process.env.SERVER_URL + "/auth/google/callback"
   },
   async (accessToken, refreshToken, profile, cb) => {
         // profile contains user info from Google

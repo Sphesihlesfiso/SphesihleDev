@@ -14,7 +14,9 @@ body {
 }
 .about-content {
     display: flex;
+    
     justify-content: center;
+    
     text-align: center;
 }
 footer {
@@ -132,9 +134,6 @@ body{background: #f5f5f5}
 .bold{
   font-weight:bold
 }
-
-
-/* Optional: Remove hover effects from form controls */
 
 
 
