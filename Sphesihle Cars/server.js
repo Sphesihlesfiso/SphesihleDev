@@ -108,7 +108,9 @@ const upload = multer({ storage });
 
 app.post("/account/admin", upload.single("image"), (req, res) => {
   const { name, price, available_bags } = req.body;
-  const image = req.file.filename;
+  const image = req.file.buffer;
+  
+  
 
   //puting the pictures details into the db.
   const query = `
