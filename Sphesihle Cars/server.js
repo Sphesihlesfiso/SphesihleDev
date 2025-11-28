@@ -91,7 +91,7 @@ app.get("/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
   
 );
-console.log("hit")
+
 app.get("/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   (req, res) => res.redirect("/account")
@@ -139,7 +139,7 @@ app.get("/logout", (req, res) => {
 app.get("/account", (req, res) => {
   if (req.isAuthenticated()) {
     //Will render admin or normal use page depending on user id
-    if (req.user.id === 7) {
+    if (req.user.id === 1) {
       res.redirect("/account/admin")
     } else {
       res.render("account");
@@ -234,7 +234,7 @@ passport.use(new GoogleStrategy({
         let newUser;
         try {
           
-        console.log("profile",profile.emails[0].value)
+ 
         const result =await dataBase.query("SELECT * FROM users WHERE email=$1",[profile.emails[0].value])
         if (result.rows.length ===0){
           newUser =await dataBase.query("INSERT INTO users (email,password) VALUES ($1,$2)",[profile.emails[0].value,"google"])
