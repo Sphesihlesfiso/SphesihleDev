@@ -108,7 +108,7 @@ const upload = multer({ storage });
 
 app.post("/account/admin", upload.single("image"), (req, res) => {
   const { name, price, available_bags } = req.body;
-  const image = req.file;
+  const image = req.file.filename;
   console.log(`THESE ARE THE IMAGES ATTRIBUTES ${image}`)
   
   
