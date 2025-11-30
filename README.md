@@ -57,9 +57,25 @@ Personal portfolio showcasing projects, certificates, and services.
 🔗 [View Portfolio](https://sphesihlesfiso.github.io/SphesihlePortfolio)
 
 ### 📜 Certificates Showcase
-Verified Udemy & Oracle certificates with direct links.  
-🔗 [Certificates](https://udemy-certificate.s3.amazonaws.com/certificate/UC-07ef2b2d-b5a7-4572-b04a-987c06f6a0d8.pdf)
+Verified Udemy & Oracle certificates.
 
+![Udemy](https://img.shields.io/badge/Udemy-A435F0?logo=udemy&logoColor=white)  
+**The Complete Full‑Stack Web Development Bootcamp** – Dr. Angela Yu  
+
+![Oracle](https://img.shields.io/badge/Oracle-F80000?logo=oracle&logoColor=white)  
+**Oracle Database SQL Certified Associate**  
+
+![Udemy](https://img.shields.io/badge/Udemy-A435F0?logo=udemy&logoColor=white)  
+**Python Scripting & Automation**  
+
+![Udemy](https://img.shields.io/badge/Udemy-A435F0?logo=udemy&logoColor=white)  
+**Java Programming Masterclass**  
+
+![Udemy](https://img.shields.io/badge/Udemy-A435F0?logo=udemy&logoColor=white)  
+**React – The Complete Guide**  
+
+![Udemy](https://img.shields.io/badge/Udemy-A435F0?logo=udemy&logoColor=white)  
+**Node.js, Express & MongoDB – Full‑Stack Guide**
 ---
 
 ## 📫 Contact
