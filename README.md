@@ -1,8 +1,7 @@
-# Sphesihle Mabaso
+# 🚀 Sphesihle Mabaso 
 
 Welcome to my portfolio!  
-Full‑Stack Developer | React | Node.js | PostgreSQL • Always learning, always building  
-
+Full‑Stack Developer | React | Node.js | PostgreSQL • Always learning, always building
 ---
 
 ## 💻 Tech Stacks
@@ -14,6 +13,9 @@ Full‑Stack Developer | React | Node.js | PostgreSQL • Always learning, alway
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?logo=bootstrap&logoColor=white)
 ![EJS](https://img.shields.io/badge/EJS-8C8C8C?logo=ejs&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?logo=tailwindcss&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![ShadCN UI](https://img.shields.io/badge/ShadCN%20UI-000000?logo=react&logoColor=61DAFB)
 
 ### ⚙️ Backend
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white)
@@ -64,3 +66,4 @@ Verified Udemy & Oracle certificates with direct links.
 - 🌍 [LinkedIn](https://www.linkedin.com/in/sphesihle-mabaso)  
 - 💻 [GitHub](https://github.com/Sphesihlesfiso)  
 - ✉️ Open to collaborations and freelance projects!
+
