@@ -55,15 +55,17 @@ Full‑stack shopping platform with authentication, admin dashboard, and PayFast
 ### 🌐 Developer Portfolio
 Personal portfolio showcasing projects, certificates, and services.  
 🔗 [View Portfolio](https://sphesihlesfiso.github.io/SphesihlePortfolio)
-
-### 📜 Certificates Showcase
-Verified Udemy & Oracle certificates.
+---
+## 🎓 Certifications
 
 ![Udemy](https://img.shields.io/badge/Udemy-A435F0?logo=udemy&logoColor=white)  
 **The Complete Full‑Stack Web Development Bootcamp** – Dr. Angela Yu  
 
 ![Oracle](https://img.shields.io/badge/Oracle-F80000?logo=oracle&logoColor=white)  
-**Oracle Database SQL Certified Associate**  
+**Oracle Cloud Infrastructure Foundations Associate**  
+
+![Oracle](https://img.shields.io/badge/Oracle-F80000?logo=oracle&logoColor=white)  
+**Oracle Generative AI Professional**  
 
 ![Udemy](https://img.shields.io/badge/Udemy-A435F0?logo=udemy&logoColor=white)  
 **Python Scripting & Automation**  
@@ -76,6 +78,7 @@ Verified Udemy & Oracle certificates.
 
 ![Udemy](https://img.shields.io/badge/Udemy-A435F0?logo=udemy&logoColor=white)  
 **Node.js, Express & MongoDB – Full‑Stack Guide**
+
 ---
 
 ## 📫 Contact
